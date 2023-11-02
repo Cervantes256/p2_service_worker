@@ -1,9 +1,15 @@
 //Nombre del cache
 const cacheName = 'project';
 //Archivos y recuros para almacenar en cache
-const cacheAssets = [
+const cacheAssets = [   
+    'articulo.html',  
+    'articulo.js',
+    'articulos.js', 
     'index.html',
-    'main.js'
+    'main.js',
+    'img/pwa_1.jpg',
+    'img/pwa_1.webp',
+    'style.css'      
     //Agregar mas recursos que se necesiten como imagenes, css, etc.
 ];
 //Instalar el service worker
