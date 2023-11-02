@@ -61,18 +61,13 @@ self.addEventListener('push', function(event){
 })
 
 //Manejo de peticiones 
-self.addEventListener('fetch', (event) => {
-    console.log('Service worker: Fetching');
-    event.respondWith(fetch(event.request).catch(() =>
-        caches.match(event.request))
-    );
-});
+
 self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
-  
+    console.log('Service worker: Fetching');
     // Manejar solicitudes para 'articulo.html' con ID variable
     if (url.origin === self.origin && url.pathname === '/articulo.html') {
-        console.log('Service worker: Fetching');
+        
       event.respondWith(
         // Intentar obtener el recurso desde la red
         fetch(event.request).then((networkResponse) => {
