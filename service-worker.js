@@ -67,3 +67,30 @@ self.addEventListener('fetch', (event) => {
         caches.match(event.request))
     );
 });
+self.addEventListener('fetch', (event) => {
+    const url = new URL(event.request.url);
+  
+    // Manejar solicitudes para 'articulo.html' con ID variable
+    if (url.origin === self.origin && url.pathname === '/articulo.html') {
+        console.log('Service worker: Fetching');
+      event.respondWith(
+        // Intentar obtener el recurso desde la red
+        fetch(event.request).then((networkResponse) => {
+          // Si la solicitud es exitosa, almacenarla en caché y devolver la respuesta
+          const responseClone = networkResponse.clone();
+          caches.open('mi-cache').then((cache) => {
+            cache.put(event.request, responseClone);
+          });
+          return networkResponse;
+        }).catch(() => {
+          // Si hay un error al obtener el recurso desde la red, intentar obtenerlo desde la caché
+          return caches.match(event.request).then((cacheResponse) => {
+            return cacheResponse || caches.match('/offline.html'); // Puedes usar una página de error personalizada
+          });
+        })
+      );
+    }
+  });
+  
+  // Resto del código del Service Worker para manejar otras funcionalidades
+  
