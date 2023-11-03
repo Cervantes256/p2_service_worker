@@ -56,3 +56,11 @@ if ("serviceWorker" in navigator && "PushManager" in window) {
     });
 }
 
+window.addEventListener("beforeinstallprompt", (event) => {
+  // Previene que el navegador muestre el mensaje de instalación por defecto
+  event.preventDefault();
+  // Guarda el evento para mostrar el mensaje cuando sea apropiado
+  deferredPrompt = event;
+  // Muestra un mensaje o banner personalizado para la instalación
+  mostrarMensajeInstalacion();
+});

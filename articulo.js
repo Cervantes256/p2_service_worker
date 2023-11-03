@@ -1,5 +1,3 @@
-
-
 if (match && match[1]) {
     // Obtener el número del nombre del archivo
     const articuloNumero = parseInt(match[1]);
