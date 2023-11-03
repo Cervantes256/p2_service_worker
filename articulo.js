@@ -1,10 +1,4 @@
-/// Obtener la URL actual como un string
-const urlActual = window.location.href;
 
-const fileName = urlActual.substring(urlActual.lastIndexOf('/') + 1);
-
-// Utilizar una expresión regular para extraer el número del nombre del archivo
-const match = fileName.match(/articulo_(\d+)\.html/);
 
 if (match && match[1]) {
     // Obtener el número del nombre del archivo

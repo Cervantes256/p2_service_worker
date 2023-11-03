@@ -2,6 +2,7 @@
 const cacheName = 'project';
 //Archivos y recuros para almacenar en cache
 const cacheAssets = [   
+    "/",
     'articulo.html',
     'articulo_1.html',  
     'articulo_2.html',

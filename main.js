@@ -1,4 +1,13 @@
-const listaArticulos = document.getElementById("lista-articulos");
+/// Obtener la URL actual como un string
+const urlActual = window.location.href;
+
+const fileName = urlActual.substring(urlActual.lastIndexOf('/') + 1);
+
+// Utilizar una expresión regular para extraer el número del nombre del archivo
+const match = fileName.match(/articulo_(\d+)\.html/);
+if (fileName == 'index.html')
+{
+  const listaArticulos = document.getElementById("lista-articulos");
 
 articulos.forEach((articulo) => {
   const listItem = document.createElement("span");
@@ -18,7 +27,7 @@ articulos.forEach((articulo) => {
  </div>`;
   listaArticulos.appendChild(listItem);
 });
-
+}
 //Verificar si el navegador soporta Service Worker
 if ("serviceWorker" in navigator && "PushManager" in window) {
   //regsitramos el service worker
@@ -47,10 +56,3 @@ if ("serviceWorker" in navigator && "PushManager" in window) {
     });
 }
 
-const navbar = document.querySelector("nav");
-articulos.forEach((articulo) => {
-    const enlace = document.createElement("a");
-    enlace.href = `articulo_${articulo.id}.html`;
-    enlace.textContent = articulo.titulo;
-    navbar.appendChild(enlace);
-});
