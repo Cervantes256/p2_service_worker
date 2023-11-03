@@ -9,7 +9,7 @@ articulos.forEach((articulo) => {
     <h2>${articulo.titulo}</h2>
     <div class="info">  
     <span>${articulo.fecha_creacion}</span>
-    <a href="articulo.html?id=${articulo.id}"> <br>
+    <a href="articulo_${articulo.id}.html"> <br>
     <span class="read_more">Read more...</span>
     </a>
     </div>
@@ -50,7 +50,7 @@ if ("serviceWorker" in navigator && "PushManager" in window) {
 const navbar = document.querySelector("nav");
 articulos.forEach((articulo) => {
     const enlace = document.createElement("a");
-    enlace.href = `articulo.html?id=${articulo.id}`;
+    enlace.href = `articulo_${articulo.id}.html`;
     enlace.textContent = articulo.titulo;
     navbar.appendChild(enlace);
 });
